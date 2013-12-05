@@ -24,7 +24,7 @@ public class TestDatabase {
 			SQLException {
 		// settings
 		String dbName = "test.db"; // TODO configure
-		String dir = "data/"; // directory of data file
+		String dir = "data/"; // directory of data file 
 		File fdir = new File(dir);
 		File[] fList = fdir.listFiles();
 
@@ -42,12 +42,12 @@ public class TestDatabase {
 				int tableID = 2; // pre-defined in SqlWriter.java
 				String[] attrb = { "idp", "idf", "time", "lat", "lng", "alt",
 						"geohash", "vlat", "vlng", "valt" };			
-		 
+		
 				// table Flight
 		/*		String tableName = "Flight";
 				int tableID = 1; // pre-defined in SqlWriter.java
 				String[] attrb = { "idf", "datef", "pilot", "type", "model" };
-		 */
+		*/
 				// open database
 				SqlWriter writer = new SqlWriter(dbName);
 				Connection conn = writer.getSQLiteConnection();
@@ -58,8 +58,8 @@ public class TestDatabase {
 
 				// TODO******** Configuration **********
 			    valueList = getValueListPoint(writer, fileName);
-			//	valueList = getValueListFlight(writer, fileName);
-
+		//		valueList = getValueListFlight(writer, fileName);
+				
 				// insert values into table
 				long startTime = System.currentTimeMillis();
 				System.out.println("> (test) Start inserting data.");
@@ -83,6 +83,7 @@ public class TestDatabase {
 	 *  data to insert into the table Point
 	 * @param writer
 	 * @param fileName
+	 * @param precision
 	 * @return
 	 */
 	private static ArrayList<String[]> getValueListPoint(SqlWriter writer, String fileName) {
@@ -98,9 +99,9 @@ public class TestDatabase {
 	}
 	
 	/**
-	 * data to insert into the table Fligth
+	 * data to insert into the table Flight
 	 * @param writer
-	 * @param fileName
+	 * @param fileName 
 	 * @return
 	 */
 	private static ArrayList<String[]> getValueListFlight(SqlWriter writer, String fileName) {

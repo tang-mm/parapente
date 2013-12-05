@@ -209,7 +209,7 @@ public class SqlWriter {
 			pst.setInt(2, Integer.parseInt(values[1])); // idPoint
 			// convert String to Date
 			SimpleDateFormat sdf = new SimpleDateFormat("HHmmss");
-			pst.setDate(3, new java.sql.Date(((Date) sdf.parse(values[2])).getTime())); // timestamp
+			pst.setTime(3, new java.sql.Time(((Date) sdf.parse(values[2])).getTime())); // timestamp
 
 			pst.setDouble(4, Double.parseDouble(values[3])); // latitude
 			pst.setDouble(5, Double.parseDouble(values[4])); // longitude

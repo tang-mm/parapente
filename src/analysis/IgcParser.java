@@ -19,6 +19,7 @@ public class IgcParser {
 	private Flight flight;
 	private ArrayList<Point> points;
 	private GeoHashing geohashing;
+	private int precision = 16; // precision of Geohash, 16 chars
 	
 	public IgcParser(String fileName) {
 		try {
@@ -34,7 +35,7 @@ public class IgcParser {
 		
 		flight = new Flight(Integer.parseInt(idFlight));
 		points = new ArrayList<Point>();
-		geohashing = new GeoHashing(8); // precision = 8 chars
+		geohashing = new GeoHashing(precision); 
 	}
 
 	/**
@@ -86,6 +87,8 @@ public class IgcParser {
 			time1 = (Date) sdf.parse(line1.substring(1, 7)); 
 			lat1 = GeoCoord.convertLatitudeFromString(line1.substring(7, 14));   // convert degree to double 
 			lng1 = GeoCoord.convertLongitudeFromString(line1.substring(15, 23)); 
+			
+			
 			alt1 = Integer.parseInt(line1.substring(30, 35));
 
 			Point pt0 = new Point(time1, lat1, lng1, alt1);
@@ -219,7 +222,7 @@ public class IgcParser {
 				SimpleDateFormat sdf = new SimpleDateFormat("ddMMyy");			
 				Date date = (Date) sdf.parse(record.substring(5, 10));
 				flight.setDate(date);
-				System.out.println("Date= " + date.toString());
+				System.out.println("Date= " + date);
 			} catch (ParseException e) {
 				e.printStackTrace();
 			}
